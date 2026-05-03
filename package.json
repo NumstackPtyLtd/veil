@@ -1,0 +1,8 @@
+{
+  "name": "veil",
+  "private": true,
+  "scripts": {
+    "dev": "pnpm --filter @veil/web dev",
+    "build": "pnpm --filter @veil/web build"
+  }
+}

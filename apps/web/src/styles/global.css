@@ -1,0 +1,95 @@
+@import "tailwindcss";
+@source "../../node_modules/@supaproxy/ui/dist";
+
+@font-face {
+  font-family: 'Costaline';
+  src: url('/fonts/costaline_variable-vf.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  --color-accent: #0d9488;
+}
+
+@layer base {
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background: var(--bg);
+    color: var(--body);
+  }
+
+  h1, h2 {
+    font-family: 'Costaline', 'Inter', system-ui, sans-serif;
+    font-weight: 700;
+  }
+
+  :root, [data-theme="light"] {
+    --bg: #FAFBFC;
+    --bg-card: #FFFFFF;
+    --bg-surface: #F0FDFA;
+    --bg-hover: #CCFBF1;
+    --text-heading: #0f172a;
+    --body: #475569;
+    --text-muted: #94a3b8;
+    --border-color: #e2e8f0;
+    --border-light: #cbd5e1;
+    --header-bg: rgba(250, 251, 252, 0.92);
+    --shadow: rgba(13, 148, 136, 0.06);
+    --overlay-bg: rgba(0, 0, 0, 0.25);
+
+    --color-accent: #0d9488;
+    --color-accent-bg: rgba(13, 148, 136, 0.06);
+    --color-accent-border: rgba(13, 148, 136, 0.15);
+    --color-accent-text: #0d9488;
+    --color-success-text: #059669;
+    --color-danger-text: #DC2626;
+    --color-warning-text: #D97706;
+
+    --input-bg: #FFFFFF;
+    --input-border: #e2e8f0;
+    --input-text: #0f172a;
+    --btn-primary-bg: #0d9488;
+    --btn-primary-text: #FFFFFF;
+    --btn-primary-hover: #0f766e;
+    --btn-secondary-bg: transparent;
+    --btn-secondary-text: #475569;
+    --btn-secondary-border: #e2e8f0;
+    --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+
+    --btn-glass-bg: linear-gradient(104deg, rgba(13,148,136,0.06) 5%, rgba(20,184,166,0.10) 100%);
+    --btn-glass-border: rgba(13,148,136,0.18);
+    --btn-glass-glow: 0 0 24px rgba(13,148,136,0.08);
+  }
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #0d9488 0%, #0ea5e9 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-glow {
+  position: absolute;
+  width: 700px;
+  height: 700px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(13,148,136,0.08) 0%, rgba(14,165,233,0.04) 50%, transparent 70%);
+  pointer-events: none;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -50%);
+  filter: blur(80px);
+}
+
+.card-hover {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.card-hover:hover {
+  transform: translateY(-2px);
+  border-color: var(--border-light);
+  box-shadow: 0 8px 30px var(--shadow);
+}
