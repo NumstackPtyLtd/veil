@@ -84,21 +84,36 @@ function HeroSection() {
             <div className="w-2.5 h-2.5 rounded-full" style={{ background: 'var(--color-success-text)' }} />
             <span className="ml-2 text-[11px] font-mono" style={{ color: 'var(--text-muted)' }}>query pipeline</span>
           </div>
-          <div className="p-5 text-left space-y-3 text-[13px] font-mono">
-            <div style={{ color: 'var(--text-muted)' }}>
-              <span style={{ color: 'var(--color-accent-text)' }}>user:</span> Show me Elvis Magagula's accounts (ID: 9201015800087)
+          <div className="p-5 text-left space-y-4 text-[13px] font-mono">
+            <div>
+              <div className="text-[10px] font-medium mb-1.5 font-sans" style={{ color: 'var(--text-muted)' }}>You send a query with real data</div>
+              <div style={{ color: 'var(--body)' }}>
+                Show me <span className="font-semibold" style={{ color: 'var(--text-heading)' }}>Elvis Magagula</span>'s accounts (ID: <span className="font-semibold" style={{ color: 'var(--text-heading)' }}>9201015800087</span>)
+              </div>
             </div>
-            <div className="rounded-lg px-3 py-2" style={{ background: 'var(--color-accent-bg)', border: '1px solid var(--color-accent-border)' }}>
-              <span style={{ color: 'var(--color-accent-text)' }}>veil:</span> <span style={{ color: 'var(--body)' }}>Show me Kgosi Molefe's accounts (ID: 8805120300045)</span>
+            <div className="flex items-center gap-2 text-[10px] font-sans font-medium" style={{ color: 'var(--color-accent-text)' }}>
+              <ArrowRight size={12} /> Veil encrypts before it reaches the model
             </div>
-            <div style={{ color: 'var(--text-muted)' }}>
-              <span style={{ color: '#0ea5e9' }}>llm:</span> Kgosi Molefe has 3 accounts. Cheque: R24,500...
+            <div className="rounded-lg px-3 py-2.5" style={{ background: 'var(--color-accent-bg)', border: '1px solid var(--color-accent-border)' }}>
+              <div className="text-[10px] font-medium mb-1.5 font-sans" style={{ color: 'var(--color-accent-text)' }}>What the AI model sees</div>
+              <div style={{ color: 'var(--body)' }}>
+                Show me <span className="font-semibold" style={{ color: 'var(--color-accent-text)' }}>Kgosi Molefe</span>'s accounts (ID: <span className="font-semibold" style={{ color: 'var(--color-accent-text)' }}>8805120300045</span>)
+              </div>
             </div>
-            <div className="rounded-lg px-3 py-2" style={{ background: 'var(--color-accent-bg)', border: '1px solid var(--color-accent-border)' }}>
-              <span style={{ color: 'var(--color-accent-text)' }}>veil:</span> <span style={{ color: 'var(--body)' }}>Elvis Magagula has 3 accounts. Cheque: R24,500...</span>
+            <div className="rounded-lg px-3 py-2.5" style={{ background: 'rgba(14,165,233,0.06)', border: '1px solid rgba(14,165,233,0.15)' }}>
+              <div className="text-[10px] font-medium mb-1.5 font-sans" style={{ color: '#0ea5e9' }}>AI responds with fake data</div>
+              <div style={{ color: 'var(--body)' }}>
+                <span style={{ color: '#0ea5e9' }}>Kgosi Molefe</span> has 3 accounts. Cheque: R24,500...
+              </div>
             </div>
-            <div style={{ color: 'var(--text-muted)' }}>
-              <span style={{ color: 'var(--color-success-text)' }}>result:</span> Real data restored. LLM never saw it.
+            <div className="flex items-center gap-2 text-[10px] font-sans font-medium" style={{ color: 'var(--color-accent-text)' }}>
+              <ArrowRight size={12} /> Veil decrypts before it reaches you
+            </div>
+            <div>
+              <div className="text-[10px] font-medium mb-1.5 font-sans" style={{ color: 'var(--color-success-text)' }}>What you see — real data restored</div>
+              <div style={{ color: 'var(--body)' }}>
+                <span className="font-semibold" style={{ color: 'var(--text-heading)' }}>Elvis Magagula</span> has 3 accounts. Cheque: R24,500...
+              </div>
             </div>
           </div>
         </div>
