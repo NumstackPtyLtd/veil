@@ -22,7 +22,7 @@ export interface VectorStoreAdapter {
 }
 
 export interface EncryptionAdapter {
-  encrypt(value: string, tenantSalt: string): string;
+  encrypt(value: string, tenantSalt: string, entityType?: EntityType): string;
   decrypt(encrypted: string, tenantSalt: string): string;
 }
 

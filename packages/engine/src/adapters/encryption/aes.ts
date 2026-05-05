@@ -16,7 +16,7 @@ export class AesEncryptionAdapter implements EncryptionAdapter {
     this.masterKey = masterKey;
   }
 
-  encrypt(value: string, tenantSalt: string): string {
+  encrypt(value: string, tenantSalt: string, _entityType?: string): string {
     const key = this.deriveKey(tenantSalt);
     const iv = this.deterministicIv(value, tenantSalt);
 

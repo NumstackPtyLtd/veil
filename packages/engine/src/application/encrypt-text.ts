@@ -49,7 +49,7 @@ export class EncryptText {
           topMatch.score >= thresholds.probableMatch &&
           topMatch.entity.encryptedAvatar
             ? topMatch.entity.encryptedAvatar
-            : this.encryption.encrypt(entity.value, tenantSalt);
+            : this.encryption.encrypt(entity.value, tenantSalt, entity.type);
 
         mappings.push({
           original: entity.value,
@@ -59,7 +59,7 @@ export class EncryptText {
           source: "vector",
         });
       } else {
-        const encrypted = this.encryption.encrypt(entity.value, tenantSalt);
+        const encrypted = this.encryption.encrypt(entity.value, tenantSalt, entity.type);
         mappings.push({
           original: entity.value,
           replacement: encrypted,

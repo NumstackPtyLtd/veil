@@ -25,7 +25,7 @@ export class SeedEntities {
       entityType: input.entityType,
       encryptedAvatar:
         input.encryptedAvatar ??
-        this.encryption.encrypt(input.realValue, tenantSalt),
+        this.encryption.encrypt(input.realValue, tenantSalt, input.entityType),
       metadata: input.metadata,
     }));
 

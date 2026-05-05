@@ -2,7 +2,7 @@ import { SpacyNerAdapter } from "./adapters/ner/spacy.js";
 import { SpacyEmbeddingAdapter } from "./adapters/embedding/spacy.js";
 import { QdrantVectorStoreAdapter } from "./adapters/vector/qdrant.js";
 import { QdrantConfigStoreAdapter } from "./adapters/config/qdrant.js";
-import { AesEncryptionAdapter } from "./adapters/encryption/aes.js";
+import { FormatPreservingEncryptionAdapter } from "./adapters/encryption/format-preserving.js";
 import { AuthService } from "./adapters/auth/index.js";
 import { createAuthMiddleware } from "./adapters/auth/middleware.js";
 import { createDb } from "./adapters/db/index.js";
@@ -55,7 +55,7 @@ export function createContainer() {
     url: config.qdrantUrl,
     apiKey: config.qdrantApiKey,
   });
-  const encryption = new AesEncryptionAdapter(config.masterKey);
+  const encryption = new FormatPreservingEncryptionAdapter(config.masterKey);
 
   // Auth
   const auth = new AuthService(db, config.jwtSecret);
