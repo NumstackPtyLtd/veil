@@ -1,0 +1,68 @@
+services:
+  engine:
+    build:
+      context: .
+      dockerfile: packages/engine/Dockerfile
+    ports:
+      - "3100:3100"
+    environment:
+      QDRANT_URL: http://qdrant:6333
+      SPACY_URL: http://spacy:8000
+      DATABASE_URL: postgres://veil:veil@postgres:5432/veil
+      VEIL_MASTER_KEY: ${VEIL_MASTER_KEY:-change-me-in-production-please}
+      JWT_SECRET: ${JWT_SECRET:-change-me-jwt-secret}
+      PORT: "3100"
+      HOST: "0.0.0.0"
+    depends_on:
+      qdrant:
+        condition: service_healthy
+      spacy:
+        condition: service_healthy
+      postgres:
+        condition: service_healthy
+
+  spacy:
+    build:
+      context: ./services/spacy
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  qdrant:
+    image: qdrant/qdrant:v1.14.1
+    ports:
+      - "6333:6333"
+      - "6334:6334"
+    volumes:
+      - qdrant_data:/qdrant/storage
+    healthcheck:
+      test: ["CMD-SHELL", "bash -c 'echo > /dev/tcp/localhost/6333'"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  postgres:
+    image: postgres:16-alpine
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: veil
+      POSTGRES_PASSWORD: veil
+      POSTGRES_DB: veil
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U veil"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+volumes:
+  qdrant_data:
+  pg_data:
