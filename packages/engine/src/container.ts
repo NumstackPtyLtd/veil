@@ -63,7 +63,7 @@ export function createContainer() {
 
   // Application services
   const encryptText = new EncryptText(ner, vectorStore, encryption);
-  const decryptText = new DecryptText(encryption);
+  const decryptText = new DecryptText();
   const seedEntities = new SeedEntities(vectorStore, encryption);
   const orgService = new OrgService(db);
   const activity = new ActivityService(db);
