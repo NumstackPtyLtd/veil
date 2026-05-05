@@ -1,8 +1,11 @@
 {
   "name": "veil",
   "private": true,
+  "packageManager": "pnpm@8.15.0",
   "scripts": {
     "dev": "pnpm --filter @veil/web dev",
-    "build": "pnpm --filter @veil/web build"
+    "dev:engine": "pnpm --filter @veil/engine dev",
+    "build": "pnpm --filter @veil/web build",
+    "build:engine": "pnpm --filter @veil/engine build"
   }
 }
