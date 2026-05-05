@@ -57,20 +57,20 @@ export function AuthGate({ engineUrl, onAuth }: Props) {
         <Card padding="lg">
           <form onSubmit={handleSubmit}>
             {mode === 'signup' && (
-              <Field label="Full name" size="default">
-                <Input value={name} onChange={setName} placeholder="Jane Doe" size="default" />
+              <Field label="Full name">
+                <Input value={name} onChange={setName} placeholder="Jane Doe" />
               </Field>
             )}
-            <Field label="Email" size="default">
-              <Input value={email} onChange={setEmail} placeholder="you@company.com" type="email" size="default" />
+            <Field label="Email">
+              <Input value={email} onChange={setEmail} placeholder="you@company.com" type="email" />
             </Field>
-            <Field label="Password" size="default">
-              <Input value={password} onChange={setPassword} placeholder="Min 8 characters" type="password" size="default" />
+            <Field label="Password">
+              <Input value={password} onChange={setPassword} placeholder="Min 8 characters" type="password" />
             </Field>
 
             {error && <ErrorAlert message={error} />}
 
-            <Button type="submit" size="md" loading={loading} className="w-full">
+            <Button type="submit" size="md" loading={loading} className="w-full mt-2">
               {mode === 'login' ? 'Sign in' : 'Create account'}
             </Button>
           </form>
