@@ -110,7 +110,7 @@ function HeroSection() {
               <ArrowRight size={12} /> Veil decrypts before it reaches you
             </div>
             <div>
-              <div className="text-[10px] font-medium mb-1.5 font-sans" style={{ color: 'var(--color-success-text)' }}>What you see — real data restored</div>
+              <div className="text-[10px] font-medium mb-1.5 font-sans" style={{ color: 'var(--color-success-text)' }}>What you see: real data restored</div>
               <div style={{ color: 'var(--body)' }}>
                 <span className="font-semibold" style={{ color: 'var(--text-heading)' }}>Elvis Magagula</span> has 3 accounts. Cheque: R24,500...
               </div>

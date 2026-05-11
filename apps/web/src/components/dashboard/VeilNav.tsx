@@ -1,7 +1,7 @@
-import { FlaskConical, Activity, FileText, Database, Settings, LayoutDashboard } from 'lucide-react';
+import { FlaskConical, FileText, Database, Settings, LayoutDashboard } from 'lucide-react';
 import type { ComponentType } from 'react';
 
-export type Section = 'overview' | 'sandbox' | 'activity' | 'patterns' | 'entities' | 'settings';
+export type Section = 'overview' | 'sandbox' | 'patterns' | 'entities' | 'settings';
 
 interface IconProps { size?: number; style?: React.CSSProperties }
 
@@ -15,12 +15,6 @@ const NAV_GROUPS: { header?: string; items: { id: Section; label: string; icon: 
     header: 'TEST',
     items: [
       { id: 'sandbox', label: 'Sandbox', icon: FlaskConical },
-    ],
-  },
-  {
-    header: 'OBSERVE',
-    items: [
-      { id: 'activity', label: 'Activity', icon: Activity },
     ],
   },
   {
@@ -58,7 +52,7 @@ export function VeilNav({ section, onSectionChange }: Props) {
                     key={item.id}
                     onClick={() => onSectionChange(item.id)}
                     aria-current={isActive ? 'page' : undefined}
-                    className={`w-auto md:w-full whitespace-nowrap flex items-center gap-2.5 px-2.5 py-2 rounded-xl text-[13px] transition-colors outline-none ${isActive ? 'font-medium' : 'hover:opacity-80'}`}
+                    className={`w-auto md:w-full whitespace-nowrap flex items-center gap-2.5 px-2.5 py-2 rounded-lg text-[13px] transition-colors outline-none ${isActive ? 'font-medium' : 'hover:opacity-80'}`}
                     style={{
                       background: isActive ? 'var(--nav-active-bg)' : 'transparent',
                       color: isActive ? 'var(--text-heading)' : 'var(--body)',

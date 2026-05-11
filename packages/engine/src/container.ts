@@ -12,6 +12,14 @@ import { SeedEntities } from "./application/seed-entities.js";
 import { OrgService } from "./application/org-service.js";
 import { ActivityService } from "./application/activity-service.js";
 
+function requireEnv(name: string): string {
+  const value = process.env[name];
+  if (!value) {
+    throw new Error(`Missing required environment variable: ${name}`);
+  }
+  return value;
+}
+
 export interface EngineConfig {
   spacyUrl: string;
   qdrantUrl: string;
@@ -25,16 +33,14 @@ export interface EngineConfig {
 
 function loadConfig(): EngineConfig {
   return {
-    spacyUrl: process.env.SPACY_URL ?? "http://localhost:8000",
-    qdrantUrl: process.env.QDRANT_URL ?? "http://localhost:6333",
+    spacyUrl: requireEnv("SPACY_URL"),
+    qdrantUrl: requireEnv("QDRANT_URL"),
     qdrantApiKey: process.env.QDRANT_API_KEY,
-    databaseUrl:
-      process.env.DATABASE_URL ??
-      "postgres://veil:veil@localhost:5432/veil",
-    masterKey: process.env.VEIL_MASTER_KEY ?? "change-me-in-production-please",
-    jwtSecret: process.env.JWT_SECRET ?? "change-me-jwt-secret",
-    port: parseInt(process.env.PORT ?? "3100", 10),
-    host: process.env.HOST ?? "0.0.0.0",
+    databaseUrl: requireEnv("DATABASE_URL"),
+    masterKey: requireEnv("VEIL_MASTER_KEY"),
+    jwtSecret: requireEnv("JWT_SECRET"),
+    port: parseInt(requireEnv("PORT"), 10),
+    host: requireEnv("HOST"),
   };
 }
 

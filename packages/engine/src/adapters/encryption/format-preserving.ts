@@ -31,7 +31,7 @@ const EMAIL_PROVIDERS = [
 ];
 
 // --- Separator for reversibility ---
-const SEP = "\x1F"; // unit separator — invisible, won't appear in real data
+const SEP = "\x1F"; // unit separator, invisible, won't appear in real data
 
 export class FormatPreservingEncryptionAdapter implements EncryptionAdapter {
   private masterKey: string;
@@ -227,7 +227,7 @@ export class FormatPreservingEncryptionAdapter implements EncryptionAdapter {
   // AES fallback for decrypt (used when mappings aren't available)
   private aesDecrypt(encrypted: string, _key: Buffer): string {
     // In format-preserving mode, decryption is always done via mappings
-    // This is a no-op fallback — the decrypt-text use case handles it
+    // This is a no-op fallback; the decrypt-text use case handles it
     return encrypted;
   }
 }
