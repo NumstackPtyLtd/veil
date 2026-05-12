@@ -28,7 +28,7 @@ export function mergeEntities(
   nerEntities: ExtractedEntity[],
   patternEntities: ExtractedEntity[],
 ): ExtractedEntity[] {
-  // Patterns are explicitly configured — they take priority over NER
+  // Patterns are explicitly configured; they take priority over NER
   // Put patterns first so they win on equal-length overlaps
   const all = [...patternEntities, ...nerEntities];
   all.sort((a, b) => a.start - b.start);
